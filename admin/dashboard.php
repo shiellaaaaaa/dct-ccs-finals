@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+$pageTitle = "Dashboard";
+
+include 'partials/header.php'; // Include header here
+include 'partials/side-bar.php'; // Include sidebar here
+
+?>
 <!-- Template Files here -->
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-5">    
     <h1 class="h2">Dashboard</h1>        
@@ -38,3 +47,4 @@
     </div>    
 </main>
 <!-- Template Files here -->
+<?php include 'partials/footer.php';  ?>
