@@ -78,4 +78,32 @@ function fetchStudents() {
     $conn->close();
     return $students;
 }
+// Fetch a student by ID
+function getStudentById($student_id) {
+    $conn = connectDatabase();
+    $stmt = $conn->prepare("SELECT * FROM students WHERE student_id = ?");
+    $stmt->bind_param("s", $student_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc(); // Return student data
+    }
+    
+    $stmt->close();
+    $conn->close();
+    return null; // Return null if no student found
+}
+
+// Update a student by ID
+function updateStudent($student_id, $first_name, $last_name) {
+    $conn = connectDatabase();
+    $stmt = $conn->prepare("UPDATE students SET first_name = ?, last_name = ? WHERE student_id = ?");
+    $stmt->bind_param("sss", $first_name, $last_name, $student_id);
+    $success = $stmt->execute();
+    
+    $stmt->close();
+    $conn->close();
+    return $success;
+}
 ?>
