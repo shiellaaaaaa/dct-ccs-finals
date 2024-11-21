@@ -1,5 +1,6 @@
 <?php
 
+// Function to connect to the database
 function connectDatabase() {
     $host = "localhost";
     $user = "root";
@@ -105,5 +106,25 @@ function updateStudent($student_id, $first_name, $last_name) {
     $stmt->close();
     $conn->close();
     return $success;
+}
+
+// Function to delete a student by ID
+function deleteStudentById($student_id) {
+    // Connect to the database
+    $conn = connectDatabase();
+    
+    // Prepare the DELETE query
+    $stmt = $conn->prepare("DELETE FROM students WHERE student_id = ?");
+    $stmt->bind_param("s", $student_id);
+
+    // Execute the query
+    $result = $stmt->execute();
+
+    // Close the statement and connection
+    $stmt->close();
+    $conn->close();
+    
+    // Return true if the delete was successful, false otherwise
+    return $result;
 }
 ?>
