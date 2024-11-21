@@ -36,10 +36,12 @@ include '../../functions.php';
                 <div class="form-group">
                     <label for="student_id">Student ID</label>
                     <input type="text" class="form-control" id="student_id" name="student_id" placeholder="Enter Student ID" required>
+                    <br>
                 </div>
                 <div class="form-group">
                     <label for="first_name">First Name</label>
                     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" required>
+                <br>
                 </div>
                 <div class="form-group">
                     <label for="last_name">Last Name</label>
